@@ -1,5 +1,9 @@
 require "rubypress/version"
 
 module Rubypress
-  # Your code goes here...
+  class Hola
+    def self.hi
+      puts "Hello world!"
+    end
+  end
 end
