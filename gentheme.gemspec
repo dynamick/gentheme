@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rubypress/version'
+require 'gentheme/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "rubypress"
-  spec.version       = Rubypress::VERSION
+  spec.name          = "gentheme"
+  spec.version       = Gentheme::VERSION
   spec.authors       = ["Michele Gobbi"]
   spec.email         = ["info@dynamick.it"]
 
-  spec.summary       = 'rubypress'
-  spec.description   = 'rubypress'
+  spec.summary       = 'Wordpress theme generator for theme developers'
+  spec.description   = 'A full featured WP theme generator designed for theme developers who want to sell their theme, such as Themeforest.'
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
@@ -30,4 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
+  spec.add_dependency "tty"
+  spec.add_dependency "tty-which"
 end

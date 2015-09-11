@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Rubypress do
+describe Gentheme do
   it 'has a version number' do
-    expect(Rubypress::VERSION).not_to be nil
+    expect(Gentheme::VERSION).not_to be nil
   end
 
   it 'does something useful' do

@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'gentheme'
+
+if ARGV[0]
+  generator = Rubypress::Generator.new(`pwd`.strip, ARGV[0])
+  generator.install_yeoman
+
+  $stderr.puts "Generated new WP Theme structure for #{generator.name}"
+else
+  puts "Please specify a name for your Wordpress Theme"
+end
