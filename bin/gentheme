@@ -3,8 +3,13 @@
 require 'gentheme'
 
 if ARGV[0]
-  generator = Rubypress::Generator.new(`pwd`.strip, ARGV[0])
-  generator.install_yeoman
+  generator = Gentheme::Generator.new(`pwd`.strip, ARGV[0])
+
+  if generator.check_requirements
+    generator.run_yeoman if generator.install_yeoman
+    generator.prepare_wordpress
+  end
+
 
   $stderr.puts "Generated new WP Theme structure for #{generator.name}"
 else

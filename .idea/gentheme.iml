@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUBY_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="gem" name="Ruby Gem">
+      <configuration>
+        <option name="GEM_APP_ROOT_PATH" value="$MODULE_DIR$" />
+        <option name="GEM_APP_TEST_PATH" value="" />
+        <option name="GEM_APP_LIB_PATH" value="$MODULE_DIR$/lib" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="RVM: ruby-2.1.1 [gentheme]" jdkType="RUBY_SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.7.4, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.2.5, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="equatable (v0.5.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="necromancer (v0.3.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pastel (v0.4.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v10.4.2, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec (v3.3.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.3.2, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.3.1, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.3.2, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.3.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty (v0.2.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty-pager (v0.2.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty-platform (v0.1.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty-progressbar (v0.6.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty-screen (v0.2.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty-spinner (v0.1.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty-table (v0.3.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty-which (v0.1.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="unicode_utils (v1.4.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="verse (v0.4.0, RVM: ruby-2.1.1 [gentheme]) [gem]" level="application" />
+  </component>
+</module>
