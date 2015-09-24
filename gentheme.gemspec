@@ -10,17 +10,11 @@ Gem::Specification.new do |spec|
   spec.email         = ["info@dynamick.it"]
 
   spec.summary       = 'Wordpress theme generator for theme developers'
-  spec.description   = 'A full featured WP theme generator designed for theme developers who want to sell their theme, such as Themeforest.'
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.description   = 'A full featured WP theme generator designed for theme authors who want to sell their theme on marketplace like Themeforest.'
+  spec.homepage      = "https://github.com/dynamick/gentheme"
   spec.license       = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
+
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
