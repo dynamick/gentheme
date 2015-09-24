@@ -4,30 +4,43 @@ require 'gentheme'
 require 'slop'
 
 opts = Slop::Options.new
-opts.banner = "Usage: gentheme [options] themename"
+opts.banner = "Usage: gentheme [options] command"
+opts.separator ""
+opts.separator "Commands:"
+opts.separator ""
+opts.separator "\tinstall themename: start installing a theme inside a folder named themename"
 opts.separator ""
 opts.separator "Available options:"
 opts.string "-p", "--path", "a path", default: `pwd`.strip
 opts.bool "-v", "--verbose", "enable verbose mode", default: true
 opts.on '--version', 'print the version' do
-    puts Gentheme::VERSION
-    exit
+  puts Gentheme::VERSION
+  exit
 end
 parser = Slop::Parser.new(opts)
 options = parser.parse(ARGV)
-themename = options.arguments[0] rescue nil
-if themename.nil?
+command = options.arguments[0] rescue nil
+if command.nil?
   puts options.to_hash
   puts options.arguments
   puts opts
   exit
 end
 
-if ARGV[0]
-  generator = Gentheme::Generator.new(themename, options)
-  generator.start
+case command
+  when "install"
+    themename = options.arguments[1] rescue nil
+    if !themename.nil?
+      generator = Gentheme::Generator.new(themename, options)
+      generator.start
 
-  $stderr.puts "Generated new WP Theme structure for #{generator.name}"
-else
-  puts "Please specify a name for your Wordpress Theme"
+      $stderr.puts "Generated new WP Theme structure for #{generator.name}"
+    else
+      puts "Please specify a name for your Wordpress Theme"
+      puts "example:"
+      puts "gentheme install mythemename"
+    end
+  else
+    puts "Unknown command"
 end
+

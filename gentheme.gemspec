@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "tty"
   spec.add_dependency "tty-which"
   spec.add_dependency "slop"
+  spec.add_dependency "mysql2"
 end

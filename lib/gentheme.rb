@@ -3,6 +3,8 @@ require 'fileutils'
 require 'tty'
 require 'tty-which'
 require 'yaml'
+require 'mysql2'
+
 require "gentheme/version"
 
 module Gentheme
@@ -27,6 +29,12 @@ module Gentheme
               created_at: Time.now,
               updated_at: Time.now
           },
+          mysql: {
+              db_host: "127.0.0.1",
+              db_user: "root",
+              db_pass: "",
+              db_name: name
+          },
           packages: {
 
           }}
@@ -38,6 +46,15 @@ module Gentheme
     def start
 
       if check_requirements
+
+
+
+        # Create database
+        if !get_status(:create_database, :packages)
+          create_database
+        else
+          puts 'Database already created.'
+        end
 
         # Install gulp-webapp
         if !get_status(:gulp_webapp, :packages)
@@ -101,6 +118,7 @@ module Gentheme
     end
 
     def write_status
+      system("#{enter_base_path}")
       File.open("#{base_path}/#{@status_file}", 'w') { |f| f.puts @status.to_yaml }
     end
 
@@ -138,7 +156,26 @@ module Gentheme
       return satisfy_requirements
     end
 
-    def check_status
+    def create_database
+      if !get_status(:create_database, :packages)
+        puts 'Creating database'
+        db_host = get_status(:db_host, :mysql)
+        db_user = get_status(:db_user, :mysql)
+        db_pass = get_status(:db_pass, :mysql)
+        db_name = get_status(:db_name, :mysql)
+        client = Mysql2::Client.new(:host => db_host, :username => db_user, :password => db_pass)
+        if client
+          client.query("DROP DATABASE IF EXISTS #{db_name}")
+          client.query("CREATE DATABASE #{db_name}")
+          client.close
+          set_status(:gulp_webapp, true, :packages)
+        else
+          puts "Can't connect to your database."
+          puts "Please edit #{@base_root}/gentheme.conf your mysql account connection."
+        end
+      else
+        puts "Database already created!"
+      end
 
     end
 
