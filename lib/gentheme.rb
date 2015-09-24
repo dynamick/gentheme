@@ -39,7 +39,11 @@ module Gentheme
 
           }}
       @status = read_status
-      @status = @default_status if @status.nil?
+      if @status.nil?
+        @status = @default_status
+        write_status
+      end
+
     end
 
 
@@ -168,7 +172,8 @@ module Gentheme
           client.query("DROP DATABASE IF EXISTS #{db_name}")
           client.query("CREATE DATABASE #{db_name}")
           client.close
-          set_status(:gulp_webapp, true, :packages)
+          puts "Database #{name} created successfully."
+          set_status(:create_database, true, :packages)
         else
           puts "Can't connect to your database."
           puts "Please edit #{@base_root}/gentheme.conf your mysql account connection."
