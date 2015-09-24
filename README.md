@@ -1,8 +1,17 @@
 # Gentheme
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gentheme`. To experiment with that code, run `bin/console` for an interactive prompt.
+This ruby gem make available a shell command, "gentheme" which will permit you to generate a wordpress theme designed for theme authors.
 
-TODO: Delete this and the text above, and describe your gem
+## Requirements
+
+This gem was tested only on OSX systems, so no warranties are given on other systems. 
+The requirements needed to be already installed on the system are:
+- npm: node.js and his packet manager
+- virtualhost.sh: a simple shell script that permit to write etc/hosts and etc/apache2/virtualhost to create the virtual host
+- wp_cli: a shell command for manage wordpress installations
+- mysql server: you've to run the server
+
+Before start gentheme make sure you've all the requirements installed and working.
 
 ## Installation
 
@@ -22,13 +31,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run 
 
-## Development
+```gentheme install themename``` 
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+to create a folder ```themename``` inside which will be all the resources. The installation process could take some minutes because all resources are downloaded from the internet and there are a lot of npm packages required. 
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Once finished, open your broser at ```http://themename``` and you'll see your starter theme.
+
+## Structure
+
+The theme is created in the ```themename/app``` folder. 
+
+A Wordpress is installed in the ```themename/wordpress``` folder.
+
+Wordpress is already installed and the theme is already activated on it.
+
+## Start editing your theme
+
+Follow the instructions at [gulp-webapp](https://github.com/yeoman/generator-gulp-webapp) to start editing your theme.
+Remember that your theme is a [Underscore Theme](http://underscores.me/).
 
 ## Contributing
 
