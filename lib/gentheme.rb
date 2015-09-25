@@ -102,7 +102,7 @@ module Gentheme
 
     def get_status(field, namespace)
       if read_status && !namespace.nil? && !field.nil?
-        @status[namespace.to_sym][field.to_sym]
+        @status[namespace.to_sym][field.to_sym] rescue nil
       else
         nil
       end
@@ -168,15 +168,17 @@ module Gentheme
         db_pass = get_status(:db_pass, :mysql)
         db_name = get_status(:db_name, :mysql)
         client = Mysql2::Client.new(:host => db_host, :username => db_user, :password => db_pass)
-        if client
+
+        if client && (!db_host.nil? && !db_user.nil?)
           #client.query("DROP DATABASE IF EXISTS #{db_name}")
-          client.query("CREATE DATABASE #{db_name} IF NOT EXISTS")
+          client.query("CREATE DATABASE #{db_name}") rescue 'DB already exists'
           client.close
           puts "Database #{name} created successfully."
           set_status(:create_database, true, :packages)
         else
           puts "Can't connect to your database."
-          puts "Please edit #{@base_root}/gentheme.conf your mysql account connection."
+          puts "Please edit #{@base_root}/gentheme.conf your mysql account connection and add the mysql lines:"
+          puts @default_status.to_yaml
         end
       else
         puts "Database already created!"
