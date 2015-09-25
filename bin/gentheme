@@ -11,7 +11,7 @@ opts.separator ""
 opts.separator "\tinstall themename: start installing a theme inside a folder named themename"
 opts.separator ""
 opts.separator "Available options:"
-opts.string "-p", "--path", "a path", default: `pwd`.strip
+opts.string "-p", "--path", "a path", default: Dir.getwd
 opts.bool "-v", "--verbose", "enable verbose mode", default: true
 opts.on '--version', 'print the version' do
   puts Gentheme::VERSION
@@ -21,8 +21,8 @@ parser = Slop::Parser.new(opts)
 options = parser.parse(ARGV)
 command = options.arguments[0] rescue nil
 if command.nil?
-  puts options.to_hash
-  puts options.arguments
+  puts "Gentheme version #{Gentheme::VERSION}"
+  puts "Current working directory: #{Dir.getwd}"
   puts opts
   exit
 end
