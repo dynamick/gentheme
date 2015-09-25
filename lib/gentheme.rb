@@ -169,8 +169,8 @@ module Gentheme
         db_name = get_status(:db_name, :mysql)
         client = Mysql2::Client.new(:host => db_host, :username => db_user, :password => db_pass)
         if client
-          client.query("DROP DATABASE IF EXISTS #{db_name}")
-          client.query("CREATE DATABASE #{db_name}")
+          #client.query("DROP DATABASE IF EXISTS #{db_name}")
+          client.query("CREATE DATABASE #{db_name} IF NOT EXISTS")
           client.close
           puts "Database #{name} created successfully."
           set_status(:create_database, true, :packages)
@@ -280,7 +280,14 @@ module Gentheme
     private
 
     def base_path
-      File.join(@root_path, @name)
+
+      # I'm already inside the project?
+      if File.exist?( File.join(@root_path, @status_file) )
+        @root_path
+      else
+        File.join(@root_path, @name)
+      end
+
     end
 
     def enter_base_path
