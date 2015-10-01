@@ -97,6 +97,13 @@ module Gentheme
           puts 'Virtualhost already created'
         end
 
+        # generate structure
+        if !get_status(:structure, :packages)
+          generate_structure
+        else
+          puts 'Structure already created'
+        end
+
         # create a starter theme
         if !get_status(:starter_theme, :packages)
           create_starter_theme
@@ -269,10 +276,22 @@ module Gentheme
         system("virtualhost.sh #{name} #{base_path}/wordpress")
         set_status(:virtualhost, true, :packages)
       end
+    end
+
+    def generate_structure
+      puts 'generating structure...'
+      if !get_status(:structure, :packages)
+        generate_subdirectories
+        generate_file('gitignore.erb', '.gitignore')
+        set_status(:structure, true, :packages)
+      end
 
     end
 
+
+
     def create_starter_theme
+      puts 'Creating starter theme...'
       puts 'Creating starter theme...'
       if !get_status(:starter_theme, :packages)
         system("#{enter_base_path} && cd wordpress && wp core config --dbname=#{name} --dbuser=root --dbhost=127.0.0.1 --skip-check")
@@ -283,7 +302,7 @@ module Gentheme
         system("#{enter_base_path} && cd wordpress && wp scaffold _s #{name}  --activate")
         system("#{enter_base_path} && mv wordpress/wp-content/themes/#{name}/* app/")
         system("#{enter_base_path} && rmdir wordpress/wp-content/themes/#{name}")
-        system("#{enter_base_path} && ln -s #{base_path}/app/ wordpress/wp-content/themes/#{name}")
+        system("#{enter_base_path} && ln -s #{base_path}/build wordpress/wp-content/themes/#{name}")
         set_status(:starter_theme, true, :packages)
       end
 

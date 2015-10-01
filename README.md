@@ -39,6 +39,8 @@ to create a folder ```themename``` inside which will be all the resources. The i
 
 Once finished, open your broser at ```http://themename``` and you'll see your starter theme.
 
+Use the option ```--path=./``` to install the app without creating a folder named as theme name.
+
 ## Structure
 
 The theme is created in the ```themename/app``` folder. 
