@@ -292,17 +292,19 @@ module Gentheme
 
     def create_starter_theme
       puts 'Creating starter theme...'
-      puts 'Creating starter theme...'
       if !get_status(:starter_theme, :packages)
         system("#{enter_base_path} && cd wordpress && wp core config --dbname=#{name} --dbuser=root --dbhost=127.0.0.1 --skip-check")
         system("#{enter_base_path} && cd wordpress && wp core install --title=#{name} --admin_user=admin --admin_password=#{name} --admin_email=youremail@#{name}.example.com --url=http://#{name} ")
         system("#{enter_base_path} && rm wordpress/wp-content/themes/#{name}")
-        system("#{enter_base_path} && mv app app_#{rand(10000)}")
-        system("#{enter_base_path} && mkdir app")
+        #system("#{enter_base_path} && mv app app_#{rand(10000)}")
+        #system("#{enter_base_path} && mkdir app")
         system("#{enter_base_path} && cd wordpress && wp scaffold _s #{name}  --activate")
         system("#{enter_base_path} && mv wordpress/wp-content/themes/#{name}/* app/")
         system("#{enter_base_path} && rmdir wordpress/wp-content/themes/#{name}")
         system("#{enter_base_path} && ln -s #{base_path}/build wordpress/wp-content/themes/#{name}")
+        system("#{enter_base_path} && rm app/index.html")
+        system("#{enter_base_path} && mv app/js/* app/scripts")
+        system("#{enter_base_path} && rmdir app/js")
         set_status(:starter_theme, true, :packages)
       end
 
@@ -340,7 +342,7 @@ module Gentheme
 
     def generate_subdirectories
       ['build'].each do |dir|
-        FileUtils.mkdir(path_to(dir))
+        FileUtils.mkdir(path_to(dir)) rescue "Folder #{dir} already exists"
       end
     end
 
